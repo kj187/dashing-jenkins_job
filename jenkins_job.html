@@ -1,0 +1,12 @@
+<h1 class="title" data-bind="title" data-showif="title_isEnabled"></h1>
+<h2 class="buildnumber" data-bind="buildNumber | prepend '#'" data-removeif="building" data-showif="buildNumber_isEnabled"></h2>
+<div class="timeAgo" data-bind="timeAgo" data-removeif="building" data-showif="timeAgo_isEnabled"></div>
+<div data-bind="branch | prepend 'Branch: '" data-removeif="building" data-showif="branch_isEnabled"></div>
+<div class="progress">
+    <div class="percent"></div>
+    <div class="pbar"></div>
+    <div class="elapsed"></div>
+</div>
+<div class="footer">
+    <div class="duration" data-bind="displayDuration | prepend 'Duration: '" data-showif="displayDuration_isEnabled"></div>
+</div>
