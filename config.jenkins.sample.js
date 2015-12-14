@@ -43,6 +43,29 @@ module.exports = {
         //        branch_isEnabled: false,
         //        displayDuration_isEnabled: true
         //    }
+        //},
+        //{
+        //    id: 'install_latest',
+        //    displayName: 'Install Latest',
+        //    eventName: 'install_latest',
+        //    cronInterval: '*/1 * * * * *',
+        //    apiMethod: 'last_build_info',
+        //
+        //    overwriteArguments: [
+        //        {
+        //            sourceJobId: 'build',
+        //            sourceArgumentName: 'id',
+        //            targetArgumentName: 'buildNumber'
+        //        }
+        //    ],
+        //
+        //    displayArguments: {
+        //        title_isEnabled: true,
+        //        buildNumber_isEnabled: true,
+        //        timeAgo_isEnabled: true,
+        //        branch_isEnabled: false,
+        //        displayDuration_isEnabled: true
+        //    }
         //}
     ]
 }

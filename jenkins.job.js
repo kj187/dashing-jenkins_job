@@ -49,6 +49,7 @@ config.jobs.forEach(function(job) {
         JenkinsAPI[job.apiMethod](job.id, function(error, data) {
             if (error) return console.log(error);
             var eventArguments = {
+                loadCoffeeScript: true,
                 title: job.displayName,
                 buildNumber: data['id'],
                 result: JenkinsService.getResult(data),
@@ -59,6 +60,21 @@ config.jobs.forEach(function(job) {
                 displayDuration: moment(data['duration']).utc().format('HH:mm:ss'),
                 displayEstimatedDuration: moment(data['estimatedDuration']).utc().format('HH:mm:ss')
             };
+
+            if (job.overwriteArguments != undefined && job.overwriteArguments.length > 0) {
+                job.overwriteArguments.forEach(function(overwriteArgument) {
+                    var argumentName = overwriteArgument.targetArgumentName;
+                    delete eventArguments[argumentName];
+                    JenkinsAPI.last_build_info(overwriteArgument.sourceJobId, function(error, data) {
+                        if (error) return console.log(error);
+                        var sourceArgumentName = overwriteArgument.sourceArgumentName;
+                        var targetArgumentValue = data[sourceArgumentName];
+                        var overwriteEventArguments = {};
+                        overwriteEventArguments[argumentName] = targetArgumentValue;
+                        send_event(job.eventName, overwriteEventArguments);
+                    });
+                });
+            }
 
             if (job.parameterizedAttributes != undefined && job.parameterizedAttributes.length > 0) {
                 job.parameterizedAttributes.forEach(function(parameter) {
