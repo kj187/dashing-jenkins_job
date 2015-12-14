@@ -144,3 +144,7 @@ In Jenkins it is possible to create your own attributes (parameterized attribute
 | ------------- |-------------| -----|
 | attributeName      | branch   | Attribute name which is available for data-bind |
 | jenkinsParameterName      | BRANCH_TO_BUILD   | The name of your own jenkins parameter |
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/kj187/dashing-jenkins_job/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
