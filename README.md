@@ -1,6 +1,8 @@
 # Jenkins Job Dashing widget.
 
-[Jenkins](https://jenkins-ci.org/) widget for [Dashing-JS](http://fabiocaseri.github.io/dashing-js).
+[Jenkins](https://jenkins-ci.org/) widget for [Dashing-JS](https://github.com/fabiocaseri/dashing-js). Author: [Julian Kleinhans](https://github.com/kj187)
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/kj187/dashing-jenkins_job/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 The Jenkins Job widget is a generic widget for Jenkins Jobs which provides a highly visible view of the build status and build progress of selected Jenkins jobs. Via configuration it is possible to add multiple widgets for different Jenkins jobs.
 
@@ -111,8 +113,8 @@ module.exports = {
 | Setting       | Example           | Description |
 | ------------- |-------------| -----|
 | protocol      | https   | Protocol of your jenkins server |
-| username      | julian.kleinhans   | Username for authentification |
-| token         | ABCDEFG12345JHKLLAIJJ   | Access token or plaintext password for authentification |
+| username      | julian.kleinhans   | Username for authentication |
+| token         | ABCDEFG12345JHKLLAIJJ   | Access token or plaintext password for authentication |
 | host      | jenkins-ci.kj187.de   | Host of your jenkins server |
 
 ##### jobs
@@ -128,6 +130,7 @@ Jobs is an array and can have multiple jobs
 
 ###### displayArguments
 displayArguments gives you the possibility to show or hide some parts in your widget
+
 | Setting       | Example           | Description |
 | ------------- |-------------| -----|
 | title_isEnabled      | true   | Show title |
@@ -138,6 +141,7 @@ displayArguments gives you the possibility to show or hide some parts in your wi
 
 ###### parameterizedAttributes
 In Jenkins it is possible to create your own attributes (parameterized attributes). With this array it is possible to read this dynamical attributes and bind them onto an variable. 
+
 | Setting       | Example           | Description |
 | ------------- |-------------| -----|
 | attributeName      | branch   | Attribute name which is available for data-bind |
