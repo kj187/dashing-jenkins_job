@@ -21,8 +21,8 @@ Move the `widgets/jenkins_job/jenkins.config.sample.js` file to the dashboard ro
 The progressbar requires the jQueryUI styles and javascript lib. Add the following lines to your `dashboards/layout.ejs`
 
 ```html
-  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.css">
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.css">
 ```
 
 or if you use Jade as your favorite template engine
@@ -43,16 +43,16 @@ $ npm install moment
 To include the widget on your dashboard, add the following snippet to the dashboard layout file:
 
 ```html
-    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1" class="widget-jenkins_job">
-      <div data-id="build" data-view="JenkinsJob" data-bind-class="result | append additionalclass" data-additionalclass=" widget"></div>
-      <i class="fa fa-archive icon-background"></i>
-    </li>
+<li data-row="1" data-col="1" data-sizex="1" data-sizey="1" class="widget-jenkins_job">
+  <div data-id="build" data-view="JenkinsJob" data-bind-class="result | append additionalclass" data-additionalclass=" widget"></div>
+  <i class="fa fa-archive icon-background"></i>
+</li>
 ```
 Or again, if you use Jade as your favorite template engine 
 ```jade
-      li(data-row='1', data-col='1', data-sizex='1', data-sizey='1', class='widget-jenkins_job')
-        div(data-id='build', data-view='JenkinsJob', data-bind-class='result | append additionalclass', data-additionalclass=' widget')
-        i(class='fa fa-archive icon-background')
+li(data-row='1', data-col='1', data-sizex='1', data-sizey='1', class='widget-jenkins_job')
+  div(data-id='build', data-view='JenkinsJob', data-bind-class='result | append additionalclass', data-additionalclass=' widget')
+  i(class='fa fa-archive icon-background')
 ```
 
 You can add multiple widgets for different Jenkins jobs. Each widget must have his own unqiue `data-id`. My suggestion is to get the Jenkins job name for `data-id`. 
