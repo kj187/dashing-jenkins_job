@@ -1,6 +1,6 @@
 # Jenkins Job Dashing widget.
 
-[Jenkins](https://jenkins-ci.org/) widget for [Dashing-JS](http://fabiocaseri.github.io/dashing-js).
+[Jenkins](https://jenkins-ci.org/) widget for [Dashing-JS](https://github.com/fabiocaseri/dashing-js). Author: [Julian Kleinhans](https://github.com/kj187)
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/kj187/dashing-jenkins_job/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
