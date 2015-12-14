@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Dashing-jenkins job : Jenkins widget for Dashing-JS">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Dashing-jenkins job</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/kj187/dashing-jenkins_job">View on GitHub</a>
+
+          <h1 id="project_title">Dashing-jenkins job</h1>
+          <h2 id="project_tagline">Jenkins widget for Dashing-JS</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/kj187/dashing-jenkins_job/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/kj187/dashing-jenkins_job/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="jenkins-job-dashing-widget" class="anchor" href="#jenkins-job-dashing-widget" aria-hidden="true"><span class="octicon octicon-link"></span></a>Jenkins Job Dashing widget.</h1>
+
+<p><a href="https://jenkins-ci.org/">Jenkins</a> widget for <a href="http://fabiocaseri.github.io/dashing-js">Dashing-JS</a>.</p>
+
+<p><a href="https://bitdeli.com/free" title="Bitdeli Badge"><img src="https://d2weczhvl823v0.cloudfront.net/kj187/dashing-jenkins_job/trend.png" alt="Bitdeli Badge"></a></p>
+
+<p>The Jenkins Job widget is a generic widget for Jenkins Jobs which provides a highly visible view of the build status and build progress of selected Jenkins jobs. Via configuration it is possible to add multiple widgets for different Jenkins jobs.</p>
+
+<h2>
+<a id="preview" class="anchor" href="#preview" aria-hidden="true"><span class="octicon octicon-link"></span></a>Preview</h2>
+
+<p><img src="http://res.cloudinary.com/kj187/image/upload/v1450096022/example_01_wq47h5.png" alt="example 1">
+<img src="http://res.cloudinary.com/kj187/image/upload/v1450095915/example_02_gudarm.png" alt="example 2"> </p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<div class="highlight highlight-source-shell"><pre>$ dashing-js install https://github.com/kj187/dashing-jenkins_job/archive/master.zip</pre></div>
+
+<p>Move the <code>widgets/jenkins_job/jenkins.config.sample.js</code> file to the dashboard root directory and rename it to <code>jenkins.config.js</code>. </p>
+
+<p>The progressbar requires the jQueryUI styles and javascript lib. Add the following lines to your <code>dashboards/layout.ejs</code></p>
+
+<div class="highlight highlight-text-html-basic"><pre><span class="pl-s1">  &lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span>
+  &lt;<span class="pl-ent">link</span> <span class="pl-e">rel</span>=<span class="pl-s"><span class="pl-pds">"</span>stylesheet<span class="pl-pds">"</span></span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.css<span class="pl-pds">"</span></span>&gt;</pre></div>
+
+<p>Or if you use Jade as your favorite template engine</p>
+
+<div class="highlight highlight-text-jade"><pre><span class="pl-ent">script</span><span class="pl-c1">(</span><span class="pl-e">src</span>=<span class="pl-s">'//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js'</span><span class="pl-c1">)</span>
+link<span class="pl-c1">(</span><span class="pl-e">rel</span>=<span class="pl-s">'stylesheet'</span>, <span class="pl-e">href</span>=<span class="pl-s">'//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.css'</span><span class="pl-c1">)</span></pre></div>
+
+<h2>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h2>
+
+<p>The following NPM packages are required</p>
+
+<div class="highlight highlight-source-shell"><pre>$ npm install jenkins-api
+$ npm install cron
+$ npm install moment</pre></div>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>To include the widget on your dashboard, add the following snippet to the dashboard layout file:</p>
+
+<div class="highlight highlight-text-html-basic"><pre>    &lt;<span class="pl-ent">li</span> <span class="pl-e">data-row</span>=<span class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span> <span class="pl-e">data-col</span>=<span class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span> <span class="pl-e">data-sizex</span>=<span class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span> <span class="pl-e">data-sizey</span>=<span class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>widget-jenkins_job<span class="pl-pds">"</span></span>&gt;
+      &lt;<span class="pl-ent">div</span> <span class="pl-e">data-id</span>=<span class="pl-s"><span class="pl-pds">"</span>build<span class="pl-pds">"</span></span> <span class="pl-e">data-view</span>=<span class="pl-s"><span class="pl-pds">"</span>JenkinsJob<span class="pl-pds">"</span></span> <span class="pl-e">data-bind-class</span>=<span class="pl-s"><span class="pl-pds">"</span>result | append additionalclass<span class="pl-pds">"</span></span> <span class="pl-e">data-additionalclass</span>=<span class="pl-s"><span class="pl-pds">"</span> widget<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">div</span>&gt;
+      &lt;<span class="pl-ent">i</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>fa fa-archive icon-background<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">i</span>&gt;
+    &lt;/<span class="pl-ent">li</span>&gt;</pre></div>
+
+<p>Or again, if you use Jade as your favorite template engine </p>
+
+<div class="highlight highlight-text-jade"><pre>      li<span class="pl-c1">(</span><span class="pl-e">data-row</span>=<span class="pl-s">'1'</span>, <span class="pl-e">data-col</span>=<span class="pl-s">'1'</span>, <span class="pl-e">data-sizex</span>=<span class="pl-s">'1'</span>, <span class="pl-e">data-sizey</span>=<span class="pl-s">'1'</span>, <span class="pl-e">class</span>=<span class="pl-s">'widget-jenkins_job'</span><span class="pl-c1">)</span>
+        div<span class="pl-c1">(</span><span class="pl-e">data-id</span>=<span class="pl-s">'build'</span>, <span class="pl-e">data-view</span>=<span class="pl-s">'JenkinsJob'</span>, <span class="pl-e">data-bind-class</span>=<span class="pl-s">'result | append additionalclass'</span>, <span class="pl-e">data-additionalclass</span>=<span class="pl-s">' widget'</span><span class="pl-c1">)</span>
+        i<span class="pl-c1">(</span><span class="pl-e">class</span>=<span class="pl-s">'fa fa-archive icon-background'</span><span class="pl-c1">)</span></pre></div>
+
+<p>You can add multiple widgets for different Jenkins jobs. Each widget must have his own unqiue <code>data-id</code>. My suggestion is to get the jenkins job name for <code>data-id</code>. </p>
+
+<h2>
+<a id="settings" class="anchor" href="#settings" aria-hidden="true"><span class="octicon octicon-link"></span></a>Settings</h2>
+
+<p>To actually use the widget on your own Dashboard, you'll have to have an access token from your Jenkins server. If you don`t have an access token you can also use your username and password. </p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-smi">module</span>.<span class="pl-smi">exports</span> <span class="pl-k">=</span> {
+    protocol<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>https<span class="pl-pds">'</span></span>,
+    username<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>YOUR_JENKINS_USERNAME<span class="pl-pds">'</span></span>,
+    token<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>YOUR_JENKINS_ACCESS_TOKEN<span class="pl-pds">'</span></span>,
+    host<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>YOUR_JENKINS_HOST<span class="pl-pds">'</span></span>,
+
+    jobs<span class="pl-k">:</span> [
+        {
+            id<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>build<span class="pl-pds">'</span></span>,
+            displayName<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Build<span class="pl-pds">'</span></span>,
+            eventName<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>build<span class="pl-pds">'</span></span>,
+            cronInterval<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>*/1 * * * * *<span class="pl-pds">'</span></span>,
+            apiMethod<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>last_build_info<span class="pl-pds">'</span></span>,
+
+            displayArguments<span class="pl-k">:</span> {
+                title_isEnabled<span class="pl-k">:</span> <span class="pl-c1">true</span>,
+                buildNumber_isEnabled<span class="pl-k">:</span> <span class="pl-c1">true</span>,
+                timeAgo_isEnabled<span class="pl-k">:</span> <span class="pl-c1">true</span>,
+                branch_isEnabled<span class="pl-k">:</span> <span class="pl-c1">true</span>,
+                displayDuration_isEnabled<span class="pl-k">:</span> <span class="pl-c1">true</span>
+            },
+
+            <span class="pl-c">//parameterizedAttributes: [</span>
+            <span class="pl-c">//    {</span>
+            <span class="pl-c">//        attributeName: 'branch',</span>
+            <span class="pl-c">//        jenkinsParameterName: 'BRANCH_TO_BUILD'</span>
+            <span class="pl-c">//    }</span>
+            <span class="pl-c">//]</span>
+        },
+
+        <span class="pl-c">// Multiple jenkins jobs</span>
+        <span class="pl-c">//{</span>
+        <span class="pl-c">//    id: 'static_code_analysis',</span>
+        <span class="pl-c">//    displayName: 'Static Code Analysis',</span>
+        <span class="pl-c">//    eventName: 'static_code_analysis',</span>
+        <span class="pl-c">//    cronInterval: '*/1 * * * * *',</span>
+        <span class="pl-c">//    apiMethod: 'last_build_info',</span>
+        <span class="pl-c">//</span>
+        <span class="pl-c">//    displayArguments: {</span>
+        <span class="pl-c">//        title_isEnabled: true,</span>
+        <span class="pl-c">//        buildNumber_isEnabled: false,</span>
+        <span class="pl-c">//        timeAgo_isEnabled: true,</span>
+        <span class="pl-c">//        branch_isEnabled: false,</span>
+        <span class="pl-c">//        displayDuration_isEnabled: true</span>
+        <span class="pl-c">//    }</span>
+        <span class="pl-c">//}</span>
+    ]
+}</pre></div>
+
+<h3>
+<a id="jenkins-settings" class="anchor" href="#jenkins-settings" aria-hidden="true"><span class="octicon octicon-link"></span></a>Jenkins settings</h3>
+
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>protocol</td>
+<td>https</td>
+<td>Protocol of your jenkins server</td>
+</tr>
+<tr>
+<td>username</td>
+<td>julian.kleinhans</td>
+<td>Username for authentication</td>
+</tr>
+<tr>
+<td>token</td>
+<td>ABCDEFG12345JHKLLAIJJ</td>
+<td>Access token or plaintext password for authentication</td>
+</tr>
+<tr>
+<td>host</td>
+<td>jenkins-ci.kj187.de</td>
+<td>Host of your jenkins server</td>
+</tr>
+</tbody>
+</table>
+
+<h5>
+<a id="jobs" class="anchor" href="#jobs" aria-hidden="true"><span class="octicon octicon-link"></span></a>jobs</h5>
+
+<p>Jobs is an array and can have multiple jobs</p>
+
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>build</td>
+<td>The jenkins job name</td>
+</tr>
+<tr>
+<td>displayName</td>
+<td>Build</td>
+<td>The widget title</td>
+</tr>
+<tr>
+<td>eventName</td>
+<td>build</td>
+<td>Event name, must be the same as the data-id attribute</td>
+</tr>
+<tr>
+<td>cronInterval</td>
+<td>*/1 * * * * *</td>
+<td></td>
+</tr>
+<tr>
+<td>apiMethod</td>
+<td>last_build_info</td>
+<td>Jenkins API method. Don`t change this value!</td>
+</tr>
+</tbody>
+</table>
+
+<h6>
+<a id="displayarguments" class="anchor" href="#displayarguments" aria-hidden="true"><span class="octicon octicon-link"></span></a>displayArguments</h6>
+
+<p>displayArguments gives you the possibility to show or hide some parts in your widget</p>
+
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title_isEnabled</td>
+<td>true</td>
+<td>Show title</td>
+</tr>
+<tr>
+<td>buildNumber_isEnabled</td>
+<td>true</td>
+<td>Show buildnumber</td>
+</tr>
+<tr>
+<td>timeAgo_isEnabled</td>
+<td>true</td>
+<td>Show time of last execution</td>
+</tr>
+<tr>
+<td>branch_isEnabled</td>
+<td>false</td>
+<td>Don`t show the branch name</td>
+</tr>
+<tr>
+<td>displayDuration_isEnabled</td>
+<td>true</td>
+<td>Show the duration time</td>
+</tr>
+</tbody>
+</table>
+
+<h6>
+<a id="parameterizedattributes" class="anchor" href="#parameterizedattributes" aria-hidden="true"><span class="octicon octicon-link"></span></a>parameterizedAttributes</h6>
+
+<p>In Jenkins it is possible to create your own attributes (parameterized attributes). With this array it is possible to read this dynamical attributes and bind them onto an variable. </p>
+
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>attributeName</td>
+<td>branch</td>
+<td>Attribute name which is available for data-bind</td>
+</tr>
+<tr>
+<td>jenkinsParameterName</td>
+<td>BRANCH_TO_BUILD</td>
+<td>The name of your own jenkins parameter</td>
+</tr>
+</tbody>
+</table>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Dashing-jenkins job maintained by <a href="https://github.com/kj187">kj187</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
