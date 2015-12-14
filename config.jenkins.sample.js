@@ -2,9 +2,9 @@
 module.exports = {
 
     protocol: 'https',
-    username: '',
-    token: '',
-    host: '',
+    username: 'YOUR_JENKINS_USERNAME',
+    token: 'YOUR_JENKINS_ACCESS_TOKEN_OR_PLAINTEXT_PASSWORD',
+    host: 'YOUR_JENKINS_HOST',
 
     jobs: [
         {
@@ -29,6 +29,8 @@ module.exports = {
             //    }
             //]
         },
+
+        // Multiple jenkins jobs
         //{
         //    id: 'static_code_analysis',
         //    displayName: 'Static Code Analysis',
