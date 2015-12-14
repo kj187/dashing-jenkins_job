@@ -1,10 +1,50 @@
 
-var JenkinsService = require('../lib/jenkins.service').init();
-var JenkinsAPI = JenkinsService.api();
-var cronJob = require('cron').CronJob;
+var jenkins_api = require('jenkins-api');
+var config = require("../config.jenkins");
 var moment = require('moment');
+var JenkinsAPI;
 
-JenkinsService.config().jobs.forEach(function(job) {
+var init = function() {
+
+    JenkinsAPI = jenkins_api.init(config.protocol + '://' + config.username + ':' + config.token + '@' + config.host, {
+        rejectUnauthorized: false
+    });
+
+    return {
+        getResult: function(data) {
+            if (data['result'] == undefined || data['result'] == null) {
+                return 'running';
+            }
+
+            return data['result'].toLowerCase();
+        },
+
+        parameterizedParameterValue: function(actions, parameterName) {
+            var result = '';
+            actions.forEach(function(action) {
+                if (action['parameters'] === undefined) return;
+                action['parameters'].forEach(function(parameter) {
+                    if(parameter['name'] != parameterName) {
+                        return;
+                    }
+                    result = parameter['value'];
+                });
+            });
+            return result;
+        },
+
+        lastTimeOfExecution: function(timestamp) {
+            var now = moment(moment().toDate().getTime());
+            var lastBuildDate = moment(timestamp).utc();
+            return lastBuildDate.from(now);
+        }
+    }
+};
+
+var JenkinsService = init();
+var cronJob = require('cron').CronJob;
+
+config.jobs.forEach(function(job) {
     new cronJob(job.cronInterval, function(){
         JenkinsAPI[job.apiMethod](job.id, function(error, data) {
             if (error) return console.log(error);

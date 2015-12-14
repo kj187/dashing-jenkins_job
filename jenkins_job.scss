@@ -54,4 +54,21 @@
     font-size: 15px;
   }
 
+
+  // jQueryUI progressBar
+
+  .ui-widget-content {
+    border: 1px solid #aaaaaa;
+    background: #ffffff url("https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/images/ui-bg_flat_10_000000_40x100.png") 50% 50% repeat-x;
+    color: #222222;
+  }
+
+  .ui-widget-header {
+    border: 1px solid #aaaaaa;
+    background: #cccccc url("https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/images/ui-bg_highlight-soft_100_eeeeee_1x100.png") 50% 50% repeat-x;
+    background-color: #cccccc;
+    color: #222222;
+    font-weight: bold;
+  }
+
 }
