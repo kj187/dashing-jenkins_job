@@ -2,6 +2,8 @@
 
 [Jenkins](https://jenkins-ci.org/) widget for [Dashing-JS](http://fabiocaseri.github.io/dashing-js).
 
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/kj187/dashing-jenkins_job/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
 The Jenkins Job widget is a generic widget for Jenkins Jobs which provides a highly visible view of the build status and build progress of selected Jenkins jobs. Via configuration it is possible to add multiple widgets for different Jenkins jobs.
 
 ## Preview
