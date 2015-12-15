@@ -15,7 +15,7 @@ The [Jenkins](https://jenkins-ci.org/) Job widget is a generic widget for Jenkin
 ### Reallife example
 Here you can see what you can achive only with Dashing-JS and this Jenkins Job widget.
 
-![Dashboard example](http://res.cloudinary.com/kj187/image/upload/c_scale,w_890/v1450165232/KJ187_Dashboard_lahak0.png)
+![Dashboard example](http://res.cloudinary.com/kj187/image/upload/c_scale,w_890/v1450212394/kj187_Dashboard_2_i4wkw6.png)
 
 ## Requirements
 
