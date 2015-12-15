@@ -53,7 +53,7 @@
 
 <p>Here you can see what you can achive only with Dashing-JS and this Jenkins Job widget.</p>
 
-<p><img src="http://res.cloudinary.com/kj187/image/upload/c_scale,w_890/v1450165232/KJ187_Dashboard_lahak0.png" alt="Dashboard example"></p>
+<p><img src="http://res.cloudinary.com/kj187/image/upload/c_scale,w_890/v1450212394/kj187_Dashboard_2_i4wkw6.png" alt="Dashboard example"></p>
 
 <h2>
 <a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h2>
@@ -426,6 +426,51 @@ link<span class="pl-c1">(</span><span class="pl-e">rel</span>=<span class="pl-s"
     li<span class="pl-c1">(</span><span class="pl-e">class</span>=<span class="pl-s">'fa fa-code icon-background'</span><span class="pl-c1">)</span></pre></div>
 
 <p>The first example uses a <code>data-sizex="2"</code> attribute and the second <code>data-sizex="1"</code>.</p>
+
+<h3>
+<a id="list-style-with-multiple-widgets" class="anchor" href="#list-style-with-multiple-widgets" aria-hidden="true"><span class="octicon octicon-link"></span></a>List style with multiple widgets</h3>
+
+<p>The Jenkins Job widget provides you also the possibility to show multiple widgets as a list. You can also set a container headline. One use case could be to collect all jobs from a node. </p>
+
+<h5>
+<a id="example-1" class="anchor" href="#example-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h5>
+
+<p><img src="http://res.cloudinary.com/kj187/image/upload/c_scale,w_890/v1450211615/kj187_Dashboard_rjo4ak.png" alt="List example"></p>
+
+<h5>
+<a id="html-1" class="anchor" href="#html-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>HTML</h5>
+
+<p>Just switch your dashboard HTML to the following</p>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">li</span> <span class="pl-e">data-row</span>=<span class="pl-s"><span class="pl-pds">"</span>2<span class="pl-pds">"</span></span> <span class="pl-e">data-col</span>=<span class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span> <span class="pl-e">data-sizex</span>=<span class="pl-s"><span class="pl-pds">"</span>2<span class="pl-pds">"</span></span> <span class="pl-e">data-sizey</span>=<span class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span>&gt;
+  &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>widget-jenkins_job widget container<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">h1</span>&gt;Title&lt;/<span class="pl-ent">h1</span>&gt;
+    &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>widget-jenkins_job item<span class="pl-pds">"</span></span>&gt;
+      &lt;<span class="pl-ent">div</span> <span class="pl-e">data-id</span>=<span class="pl-s"><span class="pl-pds">"</span>install_latest<span class="pl-pds">"</span></span> <span class="pl-e">data-view</span>=<span class="pl-s"><span class="pl-pds">"</span>JenkinsJob<span class="pl-pds">"</span></span> <span class="pl-e">data-bind-class</span>=<span class="pl-s"><span class="pl-pds">"</span>result | append additionalclass<span class="pl-pds">"</span></span> <span class="pl-e">data-additionalclass</span>=<span class="pl-s"><span class="pl-pds">"</span> widget<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">div</span>&gt;
+      &lt;<span class="pl-ent">i</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>fa fa-cog icon-background<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">i</span>&gt;
+    &lt;/<span class="pl-ent">div</span>&gt;
+    &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>widget-jenkins_job item<span class="pl-pds">"</span></span>&gt;
+      &lt;<span class="pl-ent">div</span> <span class="pl-e">data-id</span>=<span class="pl-s"><span class="pl-pds">"</span>unittest_latest<span class="pl-pds">"</span></span> <span class="pl-e">data-view</span>=<span class="pl-s"><span class="pl-pds">"</span>JenkinsJob<span class="pl-pds">"</span></span> <span class="pl-e">data-bind-class</span>=<span class="pl-s"><span class="pl-pds">"</span>result | append additionalclass<span class="pl-pds">"</span></span> <span class="pl-e">data-additionalclass</span>=<span class="pl-s"><span class="pl-pds">"</span> widget<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">div</span>&gt;
+      &lt;<span class="pl-ent">i</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>fa fa-shield icon-background<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">i</span>&gt;
+    &lt;/<span class="pl-ent">div</span>&gt;
+    <span class="pl-c">&lt;!-- ... --&gt;</span>
+  &lt;/<span class="pl-ent">div</span>&gt;
+&lt;/<span class="pl-ent">li</span>&gt;</pre></div>
+
+<p>Or if you use Jade</p>
+
+<div class="highlight highlight-text-jade"><pre>li<span class="pl-c1">(</span><span class="pl-e">data-row</span>=<span class="pl-s">'1'</span>, <span class="pl-e">data-col</span>=<span class="pl-s">'1'</span>, <span class="pl-e">data-sizex</span>=<span class="pl-s">'1'</span>, <span class="pl-e">data-sizey</span>=<span class="pl-s">'1'</span><span class="pl-c1">)</span>
+  div<span class="pl-c1">(</span><span class="pl-e">class</span>=<span class="pl-s">'widget-jenkins_job widget container'</span><span class="pl-c1">)</span>
+    h1<span class="pl-c1">(</span><span class="pl-e">title</span>=<span class="pl-s">'Titel'</span><span class="pl-c1">)</span>
+    div<span class="pl-c1">(</span><span class="pl-e">class</span>=<span class="pl-s">'widget-jenkins_job item'</span><span class="pl-c1">)</span>
+      div<span class="pl-c1">(</span><span class="pl-e">data-id</span>=<span class="pl-s">'install_latest'</span>, <span class="pl-e">data-view</span>=<span class="pl-s">'JenkinsJob'</span>, <span class="pl-e">data-bind-class</span>=<span class="pl-s">'result | prepend additionalclass'</span>, <span class="pl-e">data-additionalclass</span>=<span class="pl-s">'widget '</span><span class="pl-c1">)</span>
+      li<span class="pl-c1">(</span><span class="pl-e">class</span>=<span class="pl-s">'fa fa-code icon-background'</span><span class="pl-c1">)</span>
+    div<span class="pl-c1">(</span><span class="pl-e">class</span>=<span class="pl-s">'widget-jenkins_job item'</span><span class="pl-c1">)</span>
+      div<span class="pl-c1">(</span><span class="pl-e">data-id</span>=<span class="pl-s">'unittest_latest'</span>, <span class="pl-e">data-view</span>=<span class="pl-s">'JenkinsJob'</span>, <span class="pl-e">data-bind-class</span>=<span class="pl-s">'result | prepend additionalclass'</span>, <span class="pl-e">data-additionalclass</span>=<span class="pl-s">'widget '</span><span class="pl-c1">)</span>
+      li<span class="pl-c1">(</span><span class="pl-e">class</span>=<span class="pl-s">'fa fa-shield icon-background'</span><span class="pl-c1">)</span>
+<span class="pl-s">    // ...</span></pre></div>
+
+<p>Have fun :-)</p>
       </section>
     </div>
 
