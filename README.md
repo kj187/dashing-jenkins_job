@@ -195,3 +195,28 @@ echo "${BUILD_NUMBER}" > artifacts/build.txt
 ```
 
 `BUILD_NUMBER` is an global Jenkins variable, which includes the current build number. Make sure to deploy this file into the DOCUMENT_ROOT of your target node, so that it is reachable with an URL like http://latest.your_application_url.host/build.txt
+
+## Layout
+The Jenkins Job widget provides you also the possibility to show a widget in the half size, so instead of one normal widget you can display two small widgets.  
+
+##### Example
+![Two rows long](http://res.cloudinary.com/kj187/image/upload/c_scale,w_890/v1450184400/2row1_huxdlu.png )
+![Two rows small](http://res.cloudinary.com/kj187/image/upload/c_scale,w_890/v1450184429/2row2_aeatcw.png ) 
+
+##### HTML
+Just switch your dashboard HTML to the following
+
+```HTML
+<li data-row="1" data-col="3" data-sizex="2" data-sizey="1">
+  <div class="widget-jenkins_job two-row-container">
+    <div data-id="grunt_deploy" data-view="JenkinsJob" data-bind-class="result | prepend additionalclass" data-additionalclass="widget two-row-widget "></div>
+    <i class="fa fa-code icon-background"></i>
+  </div>
+  <div class="widget-jenkins_job two-row-container">
+    <div data-id="create_systemstorage_backup" data-view="JenkinsJob" data-bind-class="result | prepend additionalclass" data-additionalclass="widget two-row-widget "></div>
+    <i class="fa fa-dropbox icon-background fa-3"></i>
+  </div>
+</li>
+```
+
+The first example uses a `data-sizex="2"` attribute and the second `data-sizex="1"`.
