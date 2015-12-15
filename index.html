@@ -56,6 +56,21 @@
 <p><img src="http://res.cloudinary.com/kj187/image/upload/c_scale,w_890/v1450165232/KJ187_Dashboard_lahak0.png" alt="Dashboard example"></p>
 
 <h2>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h2>
+
+<p><a href="https://github.com/fabiocaseri/dashing-js">Dashing-JS</a></p>
+
+<pre lang="ssh"><code>$ npm install -g dashing-js
+</code></pre>
+
+<p>Jenkins Job Widget dependencies</p>
+
+<div class="highlight highlight-source-shell"><pre>$ npm install jenkins-api
+$ npm install cron
+$ npm install moment
+$ npm install request</pre></div>
+
+<h2>
 <a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
 
 <div class="highlight highlight-source-shell"><pre>$ dashing-js install https://github.com/kj187/dashing-jenkins_job/archive/master.zip</pre></div>
@@ -71,15 +86,6 @@
 
 <div class="highlight highlight-text-jade"><pre><span class="pl-ent">script</span><span class="pl-c1">(</span><span class="pl-e">src</span>=<span class="pl-s">'//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js'</span><span class="pl-c1">)</span>
 link<span class="pl-c1">(</span><span class="pl-e">rel</span>=<span class="pl-s">'stylesheet'</span>, <span class="pl-e">href</span>=<span class="pl-s">'//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.css'</span><span class="pl-c1">)</span></pre></div>
-
-<h2>
-<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h2>
-
-<p>The following NPM packages are required</p>
-
-<div class="highlight highlight-source-shell"><pre>$ npm install jenkins-api
-$ npm install cron
-$ npm install moment</pre></div>
 
 <h2>
 <a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
@@ -158,13 +164,9 @@ $ npm install moment</pre></div>
         <span class="pl-c">//    cronInterval: '*/1 * * * * *',</span>
         <span class="pl-c">//    apiMethod: 'last_build_info',</span>
         <span class="pl-c">//</span>
-        <span class="pl-c">//    overwriteArguments: [</span>
-        <span class="pl-c">//        {</span>
-        <span class="pl-c">//            sourceJobId: 'build',</span>
-        <span class="pl-c">//            sourceArgumentName: 'id',</span>
-        <span class="pl-c">//            targetArgumentName: 'buildNumber'</span>
-        <span class="pl-c">//        }</span>
-        <span class="pl-c">//    ],</span>
+        <span class="pl-c">//    externalBuildNumber: {</span>
+        <span class="pl-c">//       url: 'http://latest.host./build.txt'</span>
+        <span class="pl-c">//    },s</span>
         <span class="pl-c">//</span>
         <span class="pl-c">//    displayArguments: {</span>
         <span class="pl-c">//        title_isEnabled: true,</span>
@@ -324,9 +326,9 @@ $ npm install moment</pre></div>
 </table>
 
 <h6>
-<a id="overwritearguments" class="anchor" href="#overwritearguments" aria-hidden="true"><span class="octicon octicon-link"></span></a>overwriteArguments</h6>
+<a id="externalbuildnumber" class="anchor" href="#externalbuildnumber" aria-hidden="true"><span class="octicon octicon-link"></span></a>externalBuildNumber</h6>
 
-<p>Imagine that you have two Jenkins jobs. A build job, which creates an build artifact and an install job, which installs the build artifact on a server. Each job has his own buildnumber. But, for the second install job, we would like to know which build artifact - from the first jenkins job - was installed. With this setting you can get an specific argument from an other Jenkins job.</p>
+<p>Imagine that you have two Jenkins jobs. A build job, which creates an build artifact and an install job, which installs the build artifact on a server. Each job has his own buildnumber. But, for the second install job, we would like to know which build artifact - from the first jenkins job - was installed. With this setting you can get the installed buildnumber via an text file. This requires that you have created an build.txt file in the first job and it was also deployed on your target node. </p>
 
 <table>
 <thead>
@@ -338,22 +340,19 @@ $ npm install moment</pre></div>
 </thead>
 <tbody>
 <tr>
-<td>sourceJobId</td>
-<td>build</td>
-<td>Jenkins job name</td>
-</tr>
-<tr>
-<td>sourceArgumentName</td>
-<td>id</td>
-<td>Argument "id" from the sourceJobId Jenkins job</td>
-</tr>
-<tr>
-<td>targetArgumentName</td>
-<td>buildNumber</td>
-<td>Variable which stores the value of sourceArgumentName</td>
+<td>url</td>
+<td>http://latest.your_application_url.host/build.txt</td>
+<td>Text file URL which includes only the buildnumber of an artifact which is installed on that node</td>
 </tr>
 </tbody>
 </table>
+
+<p>To create a build.txt file is quite simple, just add the follwing line to your Jenkins job where you build the artifact. </p>
+
+<pre lang="ssh"><code>echo "${BUILD_NUMBER}" &gt; artifacts/build.txt
+</code></pre>
+
+<p><code>BUILD_NUMBER</code> is an global Jenkins variable, which includes the current build number. Make sure to deploy this file into the DOCUMENT_ROOT of your target node, so that it is reachable with an URL like http://latest.your_application_url.host/build.txt</p>
       </section>
     </div>
 
@@ -365,7 +364,17 @@ $ npm install moment</pre></div>
       </footer>
     </div>
 
-    
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-71424242-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
 
   </body>
 </html>
