@@ -66,7 +66,12 @@ class Dashing.JenkinsJob extends Dashing.Widget
         startProgressbar = ->
           widgetNode.find('.duration').html('Estimated duration: ' + data.displayEstimatedDuration)
           progressbarNode.show()
-          widgetNode.attr('class', 'widget running')
+
+          cssClass = "widget running"
+          if (widgetNode.hasClass('two-row-widget'))
+            cssClass = "widget two-row-widget running"
+          widgetNode.attr('class', cssClass)
+
           estimatedDuration = data.estimatedDuration || 40000
           iNow = (new Date).setTime((new Date).getTime() + 1000)
           iEnd = (new Date).setTime((new Date).getTime() + estimatedDuration)
