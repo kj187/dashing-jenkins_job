@@ -151,7 +151,7 @@ module.exports = {
 | token         | ABCDEFG12345JHKLLAIJJ   | Access token or plaintext password for authentication |
 | host      | jenkins-ci.kj187.de   | Host of your Jenkins server |
 
-##### jobs
+#### jobs
 You can define multiple jobs, keep in mind to add the html snippet in your dashboard layout file
 
 | Setting       | Example           | Description |
@@ -162,7 +162,7 @@ You can define multiple jobs, keep in mind to add the html snippet in your dashb
 | cronInterval      | */1 * * * * *   | Click [here](https://github.com/ncb000gt/node-cron) for available cron patterns |
 | apiMethod      | last_build_info   | Jenkins API method. Don`t change this value! |
 
-###### displayArguments
+##### displayArguments
 displayArguments gives you the possibility to show or hide some parts in your widget
 
 | Setting       | Example           | Description |
@@ -173,7 +173,7 @@ displayArguments gives you the possibility to show or hide some parts in your wi
 | branch_isEnabled      | false   | Don`t show the branch name  |
 | displayDuration_isEnabled      | true   | Show the duration time  |
 
-###### parameterizedAttributes
+##### parameterizedAttributes
 In Jenkins it is possible to create your own attributes (parameterized attributes). With this array it is possible to read this dynamical attributes and bind them onto a variable. 
 
 | Setting       | Example           | Description |
@@ -181,7 +181,7 @@ In Jenkins it is possible to create your own attributes (parameterized attribute
 | attributeName      | branch   | Attribute name which is available for the `data-bind` argument |
 | jenkinsParameterName      | BRANCH_TO_BUILD   | The name of your own Jenkins parameter |
 
-###### externalBuildNumber
+##### externalBuildNumber
 Imagine that you have two Jenkins jobs. A build job, which creates an build artifact and an install job, which installs the build artifact on a server. Each job has his own buildnumber. But, for the second install job, we would like to know which build artifact - from the first jenkins job - was installed. With this setting you can get the installed buildnumber via an text file. This requires that you have created an build.txt file in the first job and it was also deployed on your target node. 
 
 | Setting       | Example           | Description |
@@ -195,3 +195,41 @@ echo "${BUILD_NUMBER}" > artifacts/build.txt
 ```
 
 `BUILD_NUMBER` is an global Jenkins variable, which includes the current build number. Make sure to deploy this file into the DOCUMENT_ROOT of your target node, so that it is reachable with an URL like http://latest.your_application_url.host/build.txt
+
+## Layout
+
+### Half sized widgets
+The Jenkins Job widget provides you also the possibility to show a widget in the half size, so instead of one normal widget you can display two small widgets.  
+
+##### Example
+![Two rows long](http://res.cloudinary.com/kj187/image/upload/c_scale,w_890/v1450184400/2row1_huxdlu.png )
+![Two rows small](http://res.cloudinary.com/kj187/image/upload/c_scale,w_890/v1450184429/2row2_aeatcw.png ) 
+
+##### HTML
+Just switch your dashboard HTML to the following
+
+```HTML
+<li data-row="1" data-col="3" data-sizex="2" data-sizey="1">
+  <div class="widget-jenkins_job two-row-container">
+    <div data-id="grunt_deploy" data-view="JenkinsJob" data-bind-class="result | prepend additionalclass" data-additionalclass="widget two-row-widget "></div>
+    <i class="fa fa-code icon-background"></i>
+  </div>
+  <div class="widget-jenkins_job two-row-container">
+    <div data-id="create_backup" data-view="JenkinsJob" data-bind-class="result | prepend additionalclass" data-additionalclass="widget two-row-widget "></div>
+    <i class="fa fa-dropbox icon-background fa-3"></i>
+  </div>
+</li>
+```
+
+Or if you use Jade
+```jade
+li(data-row='1', data-col='2', data-sizex='1', data-sizey='1')
+  div(class='widget-jenkins_job two-row-container')
+    div(data-id='grunt_deploy', data-view='JenkinsJob', data-bind-class='result | prepend additionalclass', data-additionalclass='widget two-row-widget ')
+    li(class='fa fa-code icon-background')
+  div(class='widget-jenkins_job two-row-container')
+    div(data-id='create_backup', data-view='JenkinsJob', data-bind-class='result | prepend additionalclass', data-additionalclass='widget two-row-widget ')
+    li(class='fa fa-code icon-background')
+```
+
+The first example uses a `data-sizex="2"` attribute and the second `data-sizex="1"`.
