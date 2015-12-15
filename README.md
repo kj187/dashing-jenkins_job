@@ -263,3 +263,45 @@ li(data-row='1', data-col='2', data-sizex='1', data-sizey='1')
 ```
 
 The first example uses a `data-sizex="2"` attribute and the second `data-sizex="1"`.
+
+### List style with multiple widgets
+The Jenkins Job widget provides you also the possibility to show multiple widgets as a list. You can also set a container headline. One use case could be to collect all jobs from a node. 
+
+##### Example
+![List example](http://res.cloudinary.com/kj187/image/upload/c_scale,w_890/v1450211615/kj187_Dashboard_rjo4ak.png)
+
+##### HTML
+Just switch your dashboard HTML to the following
+
+```HTML
+<li data-row="2" data-col="1" data-sizex="2" data-sizey="1">
+  <div class="widget-jenkins_job widget container">
+    <h1>Title</h1>
+    <div class="widget-jenkins_job item">
+      <div data-id="install_latest" data-view="JenkinsJob" data-bind-class="result | append additionalclass" data-additionalclass=" widget"></div>
+      <i class="fa fa-cog icon-background"></i>
+    </div>
+    <div class="widget-jenkins_job item">
+      <div data-id="unittest_latest" data-view="JenkinsJob" data-bind-class="result | append additionalclass" data-additionalclass=" widget"></div>
+      <i class="fa fa-shield icon-background"></i>
+    </div>
+    <!-- ... -->
+  </div>
+</li>
+```
+
+Or if you use Jade
+```jade
+li(data-row='1', data-col='1', data-sizex='1', data-sizey='1')
+  div(class='widget-jenkins_job widget container')
+    h1(title='Titel')
+    div(class='widget-jenkins_job item')
+      div(data-id='install_latest', data-view='JenkinsJob', data-bind-class='result | prepend additionalclass', data-additionalclass='widget ')
+      li(class='fa fa-code icon-background')
+    div(class='widget-jenkins_job item')
+      div(data-id='unittest_latest', data-view='JenkinsJob', data-bind-class='result | prepend additionalclass', data-additionalclass='widget ')
+      li(class='fa fa-shield icon-background')
+    // ...
+```
+
+Have fun :-)
