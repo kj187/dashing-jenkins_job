@@ -353,6 +353,35 @@ link<span class="pl-c1">(</span><span class="pl-e">rel</span>=<span class="pl-s"
 </code></pre>
 
 <p><code>BUILD_NUMBER</code> is an global Jenkins variable, which includes the current build number. Make sure to deploy this file into the DOCUMENT_ROOT of your target node, so that it is reachable with an URL like http://latest.your_application_url.host/build.txt</p>
+
+<h2>
+<a id="layout" class="anchor" href="#layout" aria-hidden="true"><span class="octicon octicon-link"></span></a>Layout</h2>
+
+<p>The Jenkins Job widget provides you also the possibility to show a widget in the half size, so instead of one normal widget you can display two small widgets.  </p>
+
+<h5>
+<a id="example" class="anchor" href="#example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h5>
+
+<p><img src="http://res.cloudinary.com/kj187/image/upload/c_scale,w_890/v1450184400/2row1_huxdlu.png" alt="Two rows long">
+<img src="http://res.cloudinary.com/kj187/image/upload/c_scale,w_890/v1450184429/2row2_aeatcw.png" alt="Two rows small"> </p>
+
+<h5>
+<a id="html" class="anchor" href="#html" aria-hidden="true"><span class="octicon octicon-link"></span></a>HTML</h5>
+
+<p>Just switch your dashboard HTML to the following</p>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">li</span> <span class="pl-e">data-row</span>=<span class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span> <span class="pl-e">data-col</span>=<span class="pl-s"><span class="pl-pds">"</span>3<span class="pl-pds">"</span></span> <span class="pl-e">data-sizex</span>=<span class="pl-s"><span class="pl-pds">"</span>2<span class="pl-pds">"</span></span> <span class="pl-e">data-sizey</span>=<span class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span>&gt;
+  &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>widget-jenkins_job two-row-container<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">div</span> <span class="pl-e">data-id</span>=<span class="pl-s"><span class="pl-pds">"</span>grunt_deploy<span class="pl-pds">"</span></span> <span class="pl-e">data-view</span>=<span class="pl-s"><span class="pl-pds">"</span>JenkinsJob<span class="pl-pds">"</span></span> <span class="pl-e">data-bind-class</span>=<span class="pl-s"><span class="pl-pds">"</span>result | prepend additionalclass<span class="pl-pds">"</span></span> <span class="pl-e">data-additionalclass</span>=<span class="pl-s"><span class="pl-pds">"</span>widget two-row-widget <span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">div</span>&gt;
+    &lt;<span class="pl-ent">i</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>fa fa-code icon-background<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">i</span>&gt;
+  &lt;/<span class="pl-ent">div</span>&gt;
+  &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>widget-jenkins_job two-row-container<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">div</span> <span class="pl-e">data-id</span>=<span class="pl-s"><span class="pl-pds">"</span>create_systemstorage_backup<span class="pl-pds">"</span></span> <span class="pl-e">data-view</span>=<span class="pl-s"><span class="pl-pds">"</span>JenkinsJob<span class="pl-pds">"</span></span> <span class="pl-e">data-bind-class</span>=<span class="pl-s"><span class="pl-pds">"</span>result | prepend additionalclass<span class="pl-pds">"</span></span> <span class="pl-e">data-additionalclass</span>=<span class="pl-s"><span class="pl-pds">"</span>widget two-row-widget <span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">div</span>&gt;
+    &lt;<span class="pl-ent">i</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>fa fa-dropbox icon-background fa-3<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">i</span>&gt;
+  &lt;/<span class="pl-ent">div</span>&gt;
+&lt;/<span class="pl-ent">li</span>&gt;</pre></div>
+
+<p>The first example uses a <code>data-sizex="2"</code> attribute and the second <code>data-sizex="1"</code>.</p>
       </section>
     </div>
 
