@@ -1,27 +1,13 @@
 .widget-jenkins_job {
 
-  .unknown {
-    background-color: yellow;
-  }
+  &.two-row-container {
+    position: relative;
+    width: auto;
 
-  .unstable {
-    background-color: #ff0000;
-  }
-
-  .running {
-    background-color: #288062;
-  }
-
-  .success {
-    background-color: #008000;
-  }
-
-  .failure {
-    background-color: #ff0000;
-  }
-
-  .aborted {
-    background-color: rgba(28, 194, 255, 0.27);
+    .icon-background {
+      font-size: 136px;
+      top: -82px;
+    }
   }
 
   .widget {
@@ -63,7 +49,6 @@
     .ui-widget-header {
       border: 1px solid #aaaaaa;
       background: #cccccc url("https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/images/ui-bg_highlight-soft_100_eeeeee_1x100.png") 50% 50% repeat-x;
-      background-color: #cccccc;
       color: #222222;
       font-weight: bold;
     }
@@ -85,5 +70,50 @@
       position:relative;
       text-align: right;
     }
+
+    &.two-row-widget {
+      height: 175px;
+      margin: 0 0 10px 0;
+      padding: 10px;
+      display: block;
+      box-sizing: border-box;
+      overflow: hidden;
+
+      h1 {
+        font-size: 26px;
+        margin-bottom: 0;
+        //font-weight: normal !important;
+      }
+
+      .ui-progressbar {
+        height: 1em;
+      }
+
+    }
   }
+
+  .unknown {
+    background-color: yellow;
+  }
+
+  .unstable {
+    background-color: #ff0000;
+  }
+
+  .running {
+    background-color: #288062;
+  }
+
+  .success {
+    background-color: #008000;
+  }
+
+  .failure {
+    background-color: #ff0000;
+  }
+
+  .aborted {
+    background-color: rgba(28, 194, 255, 0.27);
+  }
+
 }
