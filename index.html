@@ -214,8 +214,8 @@ link<span class="pl-c1">(</span><span class="pl-e">rel</span>=<span class="pl-s"
 </tbody>
 </table>
 
-<h5>
-<a id="jobs" class="anchor" href="#jobs" aria-hidden="true"><span class="octicon octicon-link"></span></a>jobs</h5>
+<h4>
+<a id="jobs" class="anchor" href="#jobs" aria-hidden="true"><span class="octicon octicon-link"></span></a>jobs</h4>
 
 <p>You can define multiple jobs, keep in mind to add the html snippet in your dashboard layout file</p>
 
@@ -256,8 +256,8 @@ link<span class="pl-c1">(</span><span class="pl-e">rel</span>=<span class="pl-s"
 </tbody>
 </table>
 
-<h6>
-<a id="displayarguments" class="anchor" href="#displayarguments" aria-hidden="true"><span class="octicon octicon-link"></span></a>displayArguments</h6>
+<h5>
+<a id="displayarguments" class="anchor" href="#displayarguments" aria-hidden="true"><span class="octicon octicon-link"></span></a>displayArguments</h5>
 
 <p>displayArguments gives you the possibility to show or hide some parts in your widget</p>
 
@@ -298,8 +298,8 @@ link<span class="pl-c1">(</span><span class="pl-e">rel</span>=<span class="pl-s"
 </tbody>
 </table>
 
-<h6>
-<a id="parameterizedattributes" class="anchor" href="#parameterizedattributes" aria-hidden="true"><span class="octicon octicon-link"></span></a>parameterizedAttributes</h6>
+<h5>
+<a id="parameterizedattributes" class="anchor" href="#parameterizedattributes" aria-hidden="true"><span class="octicon octicon-link"></span></a>parameterizedAttributes</h5>
 
 <p>In Jenkins it is possible to create your own attributes (parameterized attributes). With this array it is possible to read this dynamical attributes and bind them onto a variable. </p>
 
@@ -325,8 +325,8 @@ link<span class="pl-c1">(</span><span class="pl-e">rel</span>=<span class="pl-s"
 </tbody>
 </table>
 
-<h6>
-<a id="externalbuildnumber" class="anchor" href="#externalbuildnumber" aria-hidden="true"><span class="octicon octicon-link"></span></a>externalBuildNumber</h6>
+<h5>
+<a id="externalbuildnumber" class="anchor" href="#externalbuildnumber" aria-hidden="true"><span class="octicon octicon-link"></span></a>externalBuildNumber</h5>
 
 <p>Imagine that you have two Jenkins jobs. A build job, which creates an build artifact and an install job, which installs the build artifact on a server. Each job has his own buildnumber. But, for the second install job, we would like to know which build artifact - from the first jenkins job - was installed. With this setting you can get the installed buildnumber via an text file. This requires that you have created an build.txt file in the first job and it was also deployed on your target node. </p>
 
@@ -357,6 +357,9 @@ link<span class="pl-c1">(</span><span class="pl-e">rel</span>=<span class="pl-s"
 <h2>
 <a id="layout" class="anchor" href="#layout" aria-hidden="true"><span class="octicon octicon-link"></span></a>Layout</h2>
 
+<h3>
+<a id="half-sized-widgets" class="anchor" href="#half-sized-widgets" aria-hidden="true"><span class="octicon octicon-link"></span></a>Half sized widgets</h3>
+
 <p>The Jenkins Job widget provides you also the possibility to show a widget in the half size, so instead of one normal widget you can display two small widgets.  </p>
 
 <h5>
@@ -376,10 +379,20 @@ link<span class="pl-c1">(</span><span class="pl-e">rel</span>=<span class="pl-s"
     &lt;<span class="pl-ent">i</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>fa fa-code icon-background<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">i</span>&gt;
   &lt;/<span class="pl-ent">div</span>&gt;
   &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>widget-jenkins_job two-row-container<span class="pl-pds">"</span></span>&gt;
-    &lt;<span class="pl-ent">div</span> <span class="pl-e">data-id</span>=<span class="pl-s"><span class="pl-pds">"</span>create_systemstorage_backup<span class="pl-pds">"</span></span> <span class="pl-e">data-view</span>=<span class="pl-s"><span class="pl-pds">"</span>JenkinsJob<span class="pl-pds">"</span></span> <span class="pl-e">data-bind-class</span>=<span class="pl-s"><span class="pl-pds">"</span>result | prepend additionalclass<span class="pl-pds">"</span></span> <span class="pl-e">data-additionalclass</span>=<span class="pl-s"><span class="pl-pds">"</span>widget two-row-widget <span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">div</span>&gt;
+    &lt;<span class="pl-ent">div</span> <span class="pl-e">data-id</span>=<span class="pl-s"><span class="pl-pds">"</span>create_backup<span class="pl-pds">"</span></span> <span class="pl-e">data-view</span>=<span class="pl-s"><span class="pl-pds">"</span>JenkinsJob<span class="pl-pds">"</span></span> <span class="pl-e">data-bind-class</span>=<span class="pl-s"><span class="pl-pds">"</span>result | prepend additionalclass<span class="pl-pds">"</span></span> <span class="pl-e">data-additionalclass</span>=<span class="pl-s"><span class="pl-pds">"</span>widget two-row-widget <span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">div</span>&gt;
     &lt;<span class="pl-ent">i</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>fa fa-dropbox icon-background fa-3<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">i</span>&gt;
   &lt;/<span class="pl-ent">div</span>&gt;
 &lt;/<span class="pl-ent">li</span>&gt;</pre></div>
+
+<p>Or if you use Jade</p>
+
+<div class="highlight highlight-text-jade"><pre>li<span class="pl-c1">(</span><span class="pl-e">data-row</span>=<span class="pl-s">'1'</span>, <span class="pl-e">data-col</span>=<span class="pl-s">'2'</span>, <span class="pl-e">data-sizex</span>=<span class="pl-s">'1'</span>, <span class="pl-e">data-sizey</span>=<span class="pl-s">'1'</span><span class="pl-c1">)</span>
+  div<span class="pl-c1">(</span><span class="pl-e">class</span>=<span class="pl-s">'widget-jenkins_job two-row-container'</span><span class="pl-c1">)</span>
+    div<span class="pl-c1">(</span><span class="pl-e">data-id</span>=<span class="pl-s">'grunt_deploy'</span>, <span class="pl-e">data-view</span>=<span class="pl-s">'JenkinsJob'</span>, <span class="pl-e">data-bind-class</span>=<span class="pl-s">'result | prepend additionalclass'</span>, <span class="pl-e">data-additionalclass</span>=<span class="pl-s">'widget two-row-widget '</span><span class="pl-c1">)</span>
+    li<span class="pl-c1">(</span><span class="pl-e">class</span>=<span class="pl-s">'fa fa-code icon-background'</span><span class="pl-c1">)</span>
+  div<span class="pl-c1">(</span><span class="pl-e">class</span>=<span class="pl-s">'widget-jenkins_job two-row-container'</span><span class="pl-c1">)</span>
+    div<span class="pl-c1">(</span><span class="pl-e">data-id</span>=<span class="pl-s">'create_backup'</span>, <span class="pl-e">data-view</span>=<span class="pl-s">'JenkinsJob'</span>, <span class="pl-e">data-bind-class</span>=<span class="pl-s">'result | prepend additionalclass'</span>, <span class="pl-e">data-additionalclass</span>=<span class="pl-s">'widget two-row-widget '</span><span class="pl-c1">)</span>
+    li<span class="pl-c1">(</span><span class="pl-e">class</span>=<span class="pl-s">'fa fa-code icon-background'</span><span class="pl-c1">)</span></pre></div>
 
 <p>The first example uses a <code>data-sizex="2"</code> attribute and the second <code>data-sizex="1"</code>.</p>
       </section>
