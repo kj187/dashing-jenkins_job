@@ -24,51 +24,66 @@
     background-color: rgba(28, 194, 255, 0.27);
   }
 
-  h1 {
-    font-size: 36px;
-    font-weight: bold;
-  }
-
   .widget {
     vertical-align: top;
+    position:relative;
+
+    h1.title {
+      font-size: 36px;
+      font-weight: bold;
+    }
+
+    h2.buildnumber {
+      font-size: 68px;
+    }
+
+    .timeAgo {
+      font-size: 22px;
+    }
+
+    .footer {
+      position:absolute;
+      bottom:0px;
+    }
+
+    .duration {
+      padding-bottom:10px;
+      color: rgba(0, 0, 0, 0.5);
+      font-size: 15px;
+    }
+
+    // jQueryUI progressBar
+
+    .ui-widget-content {
+      border: 1px solid #aaaaaa;
+      background: #ffffff url("https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/images/ui-bg_flat_10_000000_40x100.png") 50% 50% repeat-x;
+      color: #222222;
+    }
+
+    .ui-widget-header {
+      border: 1px solid #aaaaaa;
+      background: #cccccc url("https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/images/ui-bg_highlight-soft_100_eeeeee_1x100.png") 50% 50% repeat-x;
+      background-color: #cccccc;
+      color: #222222;
+      font-weight: bold;
+    }
+
+    .pbar .ui-progressbar-value {
+      display:block !important
+    }
+
+    .pbar {
+      overflow: hidden
+    }
+
+    .percent {
+      position:relative;
+      text-align: right;
+    }
+
+    .elapsed {
+      position:relative;
+      text-align: right;
+    }
   }
-
-  .timeAgo {
-    font-size: 22px;
-  }
-
-  position:relative;
-  .pbar .ui-progressbar-value {display:block !important}
-  .pbar {overflow: hidden}
-  .percent {position:relative;text-align: right;}
-  .elapsed {position:relative;text-align: right;}
-
-  .footer {
-    position:absolute;
-    bottom:0px;
-  }
-
-  .duration {
-    padding-bottom:10px;
-    color: rgba(0, 0, 0, 0.5);
-    font-size: 15px;
-  }
-
-
-  // jQueryUI progressBar
-
-  .ui-widget-content {
-    border: 1px solid #aaaaaa;
-    background: #ffffff url("https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/images/ui-bg_flat_10_000000_40x100.png") 50% 50% repeat-x;
-    color: #222222;
-  }
-
-  .ui-widget-header {
-    border: 1px solid #aaaaaa;
-    background: #cccccc url("https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/images/ui-bg_highlight-soft_100_eeeeee_1x100.png") 50% 50% repeat-x;
-    background-color: #cccccc;
-    color: #222222;
-    font-weight: bold;
-  }
-
 }

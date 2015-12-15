@@ -43,6 +43,7 @@ var init = function() {
 
 var JenkinsService = init();
 var cronJob = require('cron').CronJob;
+var request = require('request');
 
 config.jobs.forEach(function(job) {
     new cronJob(job.cronInterval, function(){
@@ -61,19 +62,15 @@ config.jobs.forEach(function(job) {
                 displayEstimatedDuration: moment(data['estimatedDuration']).utc().format('HH:mm:ss')
             };
 
-            if (job.overwriteArguments != undefined && job.overwriteArguments.length > 0) {
-                job.overwriteArguments.forEach(function(overwriteArgument) {
-                    var argumentName = overwriteArgument.targetArgumentName;
-                    delete eventArguments[argumentName];
-                    JenkinsAPI.last_build_info(overwriteArgument.sourceJobId, function(error, data) {
-                        if (error) return console.log(error);
-                        var sourceArgumentName = overwriteArgument.sourceArgumentName;
-                        var targetArgumentValue = data[sourceArgumentName];
-                        var overwriteEventArguments = {};
-                        overwriteEventArguments[argumentName] = targetArgumentValue;
-                        send_event(job.eventName, overwriteEventArguments);
-                    });
-                });
+            if (job.externalBuildNumber != undefined) {
+                delete eventArguments.buildNumber;
+                request(job.externalBuildNumber.url, function (error, response, buildNumber) {
+                    if (error || response.statusCode != 200) {
+                        buildNumber = 'Error';
+                        console.log(job.externalBuildNumber.url + ' not found: ', error, response.statusCode)
+                    }
+                    send_event(job.eventName, { buildNumber: buildNumber });
+                })
             }
 
             if (job.parameterizedAttributes != undefined && job.parameterizedAttributes.length > 0) {

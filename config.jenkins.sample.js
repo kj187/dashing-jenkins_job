@@ -53,13 +53,9 @@ module.exports = {
         //    cronInterval: '*/1 * * * * *',
         //    apiMethod: 'last_build_info',
         //
-        //    overwriteArguments: [
-        //        {
-        //            sourceJobId: 'build',
-        //            sourceArgumentName: 'id',
-        //            targetArgumentName: 'buildNumber'
-        //        }
-        //    ],
+        //    externalBuildNumber: {
+        //       url: 'http://latest.host./build.txt'
+        //    },s
         //
         //    displayArguments: {
         //        title_isEnabled: true,
