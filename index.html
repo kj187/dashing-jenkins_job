@@ -110,6 +110,9 @@ link<span class="pl-c1">(</span><span class="pl-e">rel</span>=<span class="pl-s"
 
 <p>To actually use the widget on your own Dashboard, you'll have to have an access token from your Jenkins server. If you don`t have an access token you can also use your username and password. </p>
 
+<h3>
+<a id="minimum-settings-example" class="anchor" href="#minimum-settings-example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Minimum settings example</h3>
+
 <div class="highlight highlight-source-js"><pre><span class="pl-smi">module</span>.<span class="pl-smi">exports</span> <span class="pl-k">=</span> {
 
     protocol<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>https<span class="pl-pds">'</span></span>,
@@ -132,50 +135,78 @@ link<span class="pl-c1">(</span><span class="pl-e">rel</span>=<span class="pl-s"
                 branch_isEnabled<span class="pl-k">:</span> <span class="pl-c1">true</span>,
                 displayDuration_isEnabled<span class="pl-k">:</span> <span class="pl-c1">true</span>
             },
-
-            <span class="pl-c">//parameterizedAttributes: [</span>
-            <span class="pl-c">//    {</span>
-            <span class="pl-c">//        attributeName: 'branch',</span>
-            <span class="pl-c">//        jenkinsParameterName: 'BRANCH_TO_BUILD'</span>
-            <span class="pl-c">//    }</span>
-            <span class="pl-c">//]</span>
         },
+    ]
+}</pre></div>
 
-        <span class="pl-c">// Multiple jenkins jobs</span>
-        <span class="pl-c">//{</span>
-        <span class="pl-c">//    id: 'static_code_analysis',</span>
-        <span class="pl-c">//    displayName: 'Static Code Analysis',</span>
-        <span class="pl-c">//    eventName: 'static_code_analysis',</span>
-        <span class="pl-c">//    cronInterval: '*/1 * * * * *',</span>
-        <span class="pl-c">//    apiMethod: 'last_build_info',</span>
-        <span class="pl-c">//</span>
-        <span class="pl-c">//    displayArguments: {</span>
-        <span class="pl-c">//        title_isEnabled: true,</span>
-        <span class="pl-c">//        buildNumber_isEnabled: false,</span>
-        <span class="pl-c">//        timeAgo_isEnabled: true,</span>
-        <span class="pl-c">//        branch_isEnabled: false,</span>
-        <span class="pl-c">//        displayDuration_isEnabled: true</span>
-        <span class="pl-c">//    }</span>
-        <span class="pl-c">//},</span>
-        <span class="pl-c">//{</span>
-        <span class="pl-c">//    id: 'install_latest',</span>
-        <span class="pl-c">//    displayName: 'Install Latest',</span>
-        <span class="pl-c">//    eventName: 'install_latest',</span>
-        <span class="pl-c">//    cronInterval: '*/1 * * * * *',</span>
-        <span class="pl-c">//    apiMethod: 'last_build_info',</span>
-        <span class="pl-c">//</span>
-        <span class="pl-c">//    externalBuildNumber: {</span>
-        <span class="pl-c">//       url: 'http://latest.host./build.txt'</span>
-        <span class="pl-c">//    },s</span>
-        <span class="pl-c">//</span>
-        <span class="pl-c">//    displayArguments: {</span>
-        <span class="pl-c">//        title_isEnabled: true,</span>
-        <span class="pl-c">//        buildNumber_isEnabled: true,</span>
-        <span class="pl-c">//        timeAgo_isEnabled: true,</span>
-        <span class="pl-c">//        branch_isEnabled: false,</span>
-        <span class="pl-c">//        displayDuration_isEnabled: true</span>
-        <span class="pl-c">//    }</span>
-        <span class="pl-c">//}</span>
+<h3>
+<a id="reallife-settings-example" class="anchor" href="#reallife-settings-example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reallife settings example</h3>
+
+<div class="highlight highlight-source-js"><pre>
+<span class="pl-smi">module</span>.<span class="pl-smi">exports</span> <span class="pl-k">=</span> {
+
+    protocol<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>https<span class="pl-pds">'</span></span>,
+    username<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>YOUR_JENKINS_USERNAME<span class="pl-pds">'</span></span>,
+    token<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>YOUR_JENKINS_ACCESS_TOKEN_OR_PLAINTEXT_PASSWORD<span class="pl-pds">'</span></span>,
+    host<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>YOUR_JENKINS_HOST<span class="pl-pds">'</span></span>,
+
+    jobs<span class="pl-k">:</span> [
+        {
+            id<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>build<span class="pl-pds">'</span></span>,
+            displayName<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Build<span class="pl-pds">'</span></span>,
+            eventName<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>build<span class="pl-pds">'</span></span>,
+            cronInterval<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>*/1 * * * * *<span class="pl-pds">'</span></span>,
+            apiMethod<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>last_build_info<span class="pl-pds">'</span></span>,
+
+            displayArguments<span class="pl-k">:</span> {
+                title_isEnabled<span class="pl-k">:</span> <span class="pl-c1">true</span>,
+                buildNumber_isEnabled<span class="pl-k">:</span> <span class="pl-c1">true</span>,
+                timeAgo_isEnabled<span class="pl-k">:</span> <span class="pl-c1">true</span>,
+                branch_isEnabled<span class="pl-k">:</span> <span class="pl-c1">true</span>,
+                displayDuration_isEnabled<span class="pl-k">:</span> <span class="pl-c1">true</span>
+            },
+
+            parameterizedAttributes<span class="pl-k">:</span> [
+                {
+                    attributeName<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>branch<span class="pl-pds">'</span></span>,
+                    jenkinsParameterName<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>BRANCH_TO_BUILD<span class="pl-pds">'</span></span>
+                }
+            ]
+        },
+        {
+            id<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>static_code_analysis<span class="pl-pds">'</span></span>,
+            displayName<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Static Code Analysis<span class="pl-pds">'</span></span>,
+            eventName<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>static_code_analysis<span class="pl-pds">'</span></span>,
+            cronInterval<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>*/1 * * * * *<span class="pl-pds">'</span></span>,
+            apiMethod<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>last_build_info<span class="pl-pds">'</span></span>,
+
+            displayArguments<span class="pl-k">:</span> {
+                title_isEnabled<span class="pl-k">:</span> <span class="pl-c1">true</span>,
+                buildNumber_isEnabled<span class="pl-k">:</span> <span class="pl-c1">false</span>,
+                timeAgo_isEnabled<span class="pl-k">:</span> <span class="pl-c1">true</span>,
+                branch_isEnabled<span class="pl-k">:</span> <span class="pl-c1">false</span>,
+                displayDuration_isEnabled<span class="pl-k">:</span> <span class="pl-c1">true</span>
+            }
+        },
+        {
+            id<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>install_latest<span class="pl-pds">'</span></span>,
+            displayName<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Install Latest<span class="pl-pds">'</span></span>,
+            eventName<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>install_latest<span class="pl-pds">'</span></span>,
+            cronInterval<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>*/1 * * * * *<span class="pl-pds">'</span></span>,
+            apiMethod<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>last_build_info<span class="pl-pds">'</span></span>,
+
+            externalBuildNumber<span class="pl-k">:</span> {
+               url<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>http://latest.your_application_url.host/build.txt<span class="pl-pds">'</span></span>
+            },
+
+            displayArguments<span class="pl-k">:</span> {
+                title_isEnabled<span class="pl-k">:</span> <span class="pl-c1">true</span>,
+                buildNumber_isEnabled<span class="pl-k">:</span> <span class="pl-c1">true</span>,
+                timeAgo_isEnabled<span class="pl-k">:</span> <span class="pl-c1">true</span>,
+                branch_isEnabled<span class="pl-k">:</span> <span class="pl-c1">false</span>,
+                displayDuration_isEnabled<span class="pl-k">:</span> <span class="pl-c1">true</span>
+            }
+        }
     ]
 }</pre></div>
 
