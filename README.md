@@ -17,6 +17,21 @@ Here you can see what you can achive only with Dashing-JS and this Jenkins Job w
 
 ![Dashboard example](http://res.cloudinary.com/kj187/image/upload/c_scale,w_890/v1450165232/KJ187_Dashboard_lahak0.png)
 
+## Requirements
+
+[Dashing-JS](https://github.com/fabiocaseri/dashing-js)
+```ssh
+$ npm install -g dashing-js
+```
+
+Jenkins Job Widget dependencies
+```shell
+$ npm install jenkins-api
+$ npm install cron
+$ npm install moment
+$ npm install request
+```
+
 ## Installation
 ```shell
 $ dashing-js install https://github.com/kj187/dashing-jenkins_job/archive/master.zip
@@ -34,14 +49,6 @@ or if you use Jade as your favorite template engine
 ```jade
 script(src='//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js')
 link(rel='stylesheet', href='//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.css')
-```
-
-## Requirements
-The following NPM packages are required
-```shell
-$ npm install jenkins-api
-$ npm install cron
-$ npm install moment
 ```
 
 ## Usage
@@ -121,13 +128,9 @@ module.exports = {
         //    cronInterval: '*/1 * * * * *',
         //    apiMethod: 'last_build_info',
         //
-        //    overwriteArguments: [
-        //        {
-        //            sourceJobId: 'build',
-        //            sourceArgumentName: 'id',
-        //            targetArgumentName: 'buildNumber'
-        //        }
-        //    ],
+        //    externalBuildNumber: {
+        //       url: 'http://latest.host./build.txt'
+        //    },s
         //
         //    displayArguments: {
         //        title_isEnabled: true,
@@ -178,11 +181,17 @@ In Jenkins it is possible to create your own attributes (parameterized attribute
 | attributeName      | branch   | Attribute name which is available for the `data-bind` argument |
 | jenkinsParameterName      | BRANCH_TO_BUILD   | The name of your own Jenkins parameter |
 
-###### overwriteArguments
-Imagine that you have two Jenkins jobs. A build job, which creates an build artifact and an install job, which installs the build artifact on a server. Each job has his own buildnumber. But, for the second install job, we would like to know which build artifact - from the first jenkins job - was installed. With this setting you can get an specific argument from an other Jenkins job.
+###### externalBuildNumber
+Imagine that you have two Jenkins jobs. A build job, which creates an build artifact and an install job, which installs the build artifact on a server. Each job has his own buildnumber. But, for the second install job, we would like to know which build artifact - from the first jenkins job - was installed. With this setting you can get the installed buildnumber via an text file. This requires that you have created an build.txt file in the first job and it was also deployed on your target node. 
 
 | Setting       | Example           | Description |
 | ------------- |-------------| -----|
-| sourceJobId      | build   | Jenkins job name |
-| sourceArgumentName      | id   | Argument "id" from the sourceJobId Jenkins job |
-| targetArgumentName      | buildNumber   | Variable which stores the value of sourceArgumentName |
+| url      | http://latest.your_application_url.host/build.txt   | Text file URL which includes only the buildnumber of an artifact which is installed on that node |
+
+To create a build.txt file is quite simple, just add the follwing line to your Jenkins job where you build the artifact. 
+
+```ssh 
+echo "${BUILD_NUMBER}" > artifacts/build.txt
+```
+
+`BUILD_NUMBER` is an global Jenkins variable, which includes the current build number. Make sure to deploy this file into the DOCUMENT_ROOT of your target node, so that it is reachable with an URL like http://latest.your_application_url.host/build.txt
