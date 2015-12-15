@@ -54,7 +54,7 @@ module.exports = {
         //    apiMethod: 'last_build_info',
         //
         //    externalBuildNumber: {
-        //       url: 'http://latest.host./build.txt'
+        //       url: 'http://latest.your_application_url.host/build.txt'
         //    },s
         //
         //    displayArguments: {
