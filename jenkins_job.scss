@@ -1,5 +1,59 @@
 .widget-jenkins_job {
 
+  &.container {
+    background-color: #999;
+    padding: 0 8px !important;
+    height: auto;
+    vertical-align: top !important;
+
+    .item {
+      position: relative;
+      padding-top: 8px !important;
+
+      .icon-background {
+        font-size: 35px;
+        top: -144px;
+      }
+
+      .widget {
+        width: auto;
+        padding: 7px;
+        display: block;
+        overflow: hidden;
+
+        h1.title {
+          float: left;
+          font-size: 22px;
+          margin-bottom: 0;
+        }
+
+        .buildnumber {
+          font-size: 22px;
+          float: left;
+          margin-left: 10px;
+        }
+
+        .timeAgo {
+          float: right;
+        }
+
+        .progress {
+          float: right;
+          width: 50%;
+          font-size: 17px;
+        }
+
+        .footer {
+          display: none;
+        }
+
+        .ui-progressbar {
+          height: 0.2em;
+        }
+      }
+    }
+  }
+
   &.two-row-container {
     position: relative;
     width: auto;
@@ -64,12 +118,15 @@
     .percent {
       position:relative;
       text-align: right;
+      float: left;
     }
 
     .elapsed {
       position:relative;
       text-align: right;
     }
+
+    // Half sized widget
 
     &.two-row-widget {
       height: 175px;
@@ -86,7 +143,7 @@
       }
 
       .ui-progressbar {
-        height: 1em;
+        height: 2em;
       }
 
     }
