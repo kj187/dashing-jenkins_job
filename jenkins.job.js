@@ -63,22 +63,24 @@ config.jobs.forEach(function(job) {
                 displayEstimatedDuration: moment(data['estimatedDuration']).utc().format('HH:mm:ss')
             };
 
-            var externalBuildNumber = cache.get(job.id + '_externalBuildNumber');
-            if (externalBuildNumber != null) {
-                eventArguments.buildNumber = externalBuildNumber;
-            }
-
-            if (job.externalBuildNumber != undefined && (externalBuildNumber == null || externalBuildNumber != eventArguments.buildNumber)) {
-                delete eventArguments.buildNumber;
-                request(job.externalBuildNumber.url, function (error, response, externalBuildNumber) {
-                    if (error || response.statusCode != 200) {
-                        externalBuildNumber = 'Error';
-                        console.log(job.externalBuildNumber.url + ' not found: ', error, response.statusCode)
-                    }
-
-                    cache.put(job.id + '_externalBuildNumber', externalBuildNumber);
-                    send_event(job.eventName, { buildNumber: externalBuildNumber });
-                })
+            if (job.externalBuildNumber != undefined) {
+                var lastBuildTimestamp = cache.get(job.id + '_timestamp');
+                var externalBuildNumber = cache.get(job.id + '_externalBuildNumber');
+                if (externalBuildNumber != null) {
+                    eventArguments.buildNumber = externalBuildNumber;
+                }
+                if (externalBuildNumber == null || (eventArguments.building == false && data['timestamp'] != lastBuildTimestamp)) {
+                    delete eventArguments.buildNumber;
+                    request(job.externalBuildNumber.url, function (error, response, externalBuildNumber) {
+                        if (error || response.statusCode != 200) {
+                            externalBuildNumber = 'Error';
+                            console.log(job.externalBuildNumber.url + ' not found: ', error, response.statusCode)
+                        }
+                        cache.put(job.id + '_externalBuildNumber', externalBuildNumber);
+                        cache.put(job.id + '_timestamp', data['timestamp']);
+                        send_event(job.eventName, {buildNumber: externalBuildNumber});
+                    })
+                }
             }
 
             if (job.parameterizedAttributes != undefined && job.parameterizedAttributes.length > 0) {
