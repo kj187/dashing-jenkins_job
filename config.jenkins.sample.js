@@ -11,7 +11,7 @@ module.exports = {
             id: 'build',
             displayName: 'Build',
             eventName: 'build',
-            cronInterval: '*/1 * * * * *',
+            cronInterval: '*/5 * * * * *',
             apiMethod: 'last_build_info',
 
             displayArguments: {
@@ -33,7 +33,7 @@ module.exports = {
             id: 'static_code_analysis',
             displayName: 'Static Code Analysis',
             eventName: 'static_code_analysis',
-            cronInterval: '*/1 * * * * *',
+            cronInterval: '*/5 * * * * *',
             apiMethod: 'last_build_info',
 
             displayArguments: {
@@ -48,7 +48,7 @@ module.exports = {
             id: 'install_latest',
             displayName: 'Install Latest',
             eventName: 'install_latest',
-            cronInterval: '*/1 * * * * *',
+            cronInterval: '*/5 * * * * *',
             apiMethod: 'last_build_info',
 
             externalBuildNumber: {
