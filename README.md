@@ -30,6 +30,7 @@ $ npm install jenkins-api
 $ npm install cron
 $ npm install moment
 $ npm install request
+$ npm install memory-cache
 ```
 
 ## Installation
@@ -305,3 +306,10 @@ li(data-row='1', data-col='1', data-sizex='1', data-sizey='1')
 ```
 
 Have fun :-)
+
+## Changelog
+### release-1.1.0
+* Add caching for externalBuildNumber. You have to install "memory-cache" via npm
+ 
+### release-1.0.0
+* First release
