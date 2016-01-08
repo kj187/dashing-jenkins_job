@@ -44,11 +44,12 @@ var init = function() {
 var JenkinsService = init();
 var cronJob = require('cron').CronJob;
 var request = require('request');
+var cache = require('memory-cache');
 
 config.jobs.forEach(function(job) {
     new cronJob(job.cronInterval, function(){
         JenkinsAPI[job.apiMethod](job.id, function(error, data) {
-            if (error) return console.log(error);
+            if (error) return console.log('Error:', error);
             var eventArguments = {
                 loadCoffeeScript: true,
                 title: job.displayName,
@@ -62,14 +63,21 @@ config.jobs.forEach(function(job) {
                 displayEstimatedDuration: moment(data['estimatedDuration']).utc().format('HH:mm:ss')
             };
 
-            if (job.externalBuildNumber != undefined) {
+            var externalBuildNumber = cache.get(job.id + '_externalBuildNumber');
+            if (externalBuildNumber != null) {
+                eventArguments.buildNumber = externalBuildNumber;
+            }
+
+            if (job.externalBuildNumber != undefined && (externalBuildNumber == null || externalBuildNumber != eventArguments.buildNumber)) {
                 delete eventArguments.buildNumber;
-                request(job.externalBuildNumber.url, function (error, response, buildNumber) {
+                request(job.externalBuildNumber.url, function (error, response, externalBuildNumber) {
                     if (error || response.statusCode != 200) {
-                        buildNumber = 'Error';
+                        externalBuildNumber = 'Error';
                         console.log(job.externalBuildNumber.url + ' not found: ', error, response.statusCode)
                     }
-                    send_event(job.eventName, { buildNumber: buildNumber });
+
+                    cache.put(job.id + '_externalBuildNumber', externalBuildNumber);
+                    send_event(job.eventName, { buildNumber: externalBuildNumber });
                 })
             }
 
