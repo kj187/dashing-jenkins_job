@@ -1,7 +1,6 @@
 # Jenkins Job Dashing widget
 
-Author: [Julian Kleinhans](https://github.com/kj187)
-Blog: [http://blog.kj187.de](http://blog.kj187.de)
+Author: [Julian Kleinhans](https://github.com/kj187) · Blog: [http://blog.kj187.de](http://blog.kj187.de)
 
 [Dashing-JS](https://github.com/fabiocaseri/dashing-js) is a NodeJS port of [Dashing](http://dashing.io/), an Sinatra based framework that lets you build beautiful dashboards.
 
