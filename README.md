@@ -1,8 +1,7 @@
 # Jenkins Job Dashing widget
 
 Author: [Julian Kleinhans](https://github.com/kj187)
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/kj187/dashing-jenkins_job/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+Blog: [http://blog.kj187.de](http://blog.kj187.de)
 
 [Dashing-JS](https://github.com/fabiocaseri/dashing-js) is a NodeJS port of [Dashing](http://dashing.io/), an Sinatra based framework that lets you build beautiful dashboards.
 
