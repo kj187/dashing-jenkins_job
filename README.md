@@ -311,3 +311,8 @@ Have fun :-)
  
 ### release-1.0.0
 * First release
+
+## Other Dashing-JS widgets
+Do you know that I also created some other Dashing-JS widgets? Try out
+
+* [GitHub PullRequest widget](http://goo.gl/QqEVkl)
