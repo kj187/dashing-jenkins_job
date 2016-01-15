@@ -36,13 +36,13 @@ $ npm install memory-cache
 $ dashing-js install https://github.com/kj187/dashing-jenkins_job/archive/master.zip
 ``` 
 Create a new directory `config` on your root directory.
-Move the `widgets/jenkins_job/config.jenkins.sample.js` file to this directory and rename it to `config.jenkins.js`.
+Move the `widgets/jenkins_job/config.jenkins_job.sample.js` file to this directory and rename it to `config.jenkins_job.js`.
  
 ```
 assets/
   ...
 config/
-  config.jenkins.js
+  config.jenkins_job.js
   ...
 dashboards/
   ...
