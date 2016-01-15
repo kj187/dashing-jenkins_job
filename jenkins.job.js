@@ -1,6 +1,6 @@
 
 var jenkins_api = require('jenkins-api');
-var config = require("../config.jenkins");
+var config = require("../config/config.jenkins");
 var moment = require('moment');
 var JenkinsAPI;
 

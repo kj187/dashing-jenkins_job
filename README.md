@@ -34,8 +34,22 @@ $ npm install memory-cache
 ## Installation
 ```shell
 $ dashing-js install https://github.com/kj187/dashing-jenkins_job/archive/master.zip
+``` 
+Create a new directory `config` on your root directory.
+Move the `widgets/jenkins_job/config.jenkins.sample.js` file to this directory and rename it to `config.jenkins.js`.
+ 
 ```
-Move the `widgets/jenkins_job/jenkins.config.sample.js` file to the dashboard root directory and rename it to `jenkins.config.js`. 
+assets/
+  ...
+config/
+  config.jenkins.js
+  ...
+dashboards/
+  ...
+jobs/
+  ...
+...
+```
 
 The progressbar requires the jQueryUI styles and javascript lib. Add the following lines to your `dashboards/layout.ejs`
 
