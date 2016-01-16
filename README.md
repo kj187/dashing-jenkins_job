@@ -289,7 +289,7 @@ Just switch your dashboard HTML to the following
 ```HTML
 <li data-row="2" data-col="1" data-sizex="2" data-sizey="1">
   <div class="widget-jenkins_job widget container">
-    <h1>Title</h1>
+    <h1 class="stackTitle">Title</h1>
     <div class="widget-jenkins_job item">
       <div data-id="install_latest" data-view="JenkinsJob" data-bind-class="result | append additionalclass" data-additionalclass=" widget"></div>
       <i class="fa fa-cog icon-background"></i>
@@ -307,7 +307,7 @@ Or if you use Jade
 ```jade
 li(data-row='1', data-col='1', data-sizex='1', data-sizey='1')
   div(class='widget-jenkins_job widget container')
-    h1(title='Titel')
+    h1(title='Titel', class='stackTitle')
     div(class='widget-jenkins_job item')
       div(data-id='install_latest', data-view='JenkinsJob', data-bind-class='result | prepend additionalclass', data-additionalclass='widget ')
       li(class='fa fa-code icon-background')
@@ -322,6 +322,7 @@ Have fun :-)
 ## Changelog
 ### release-1.1.0
 * Add caching for externalBuildNumber. You have to install "memory-cache" via npm
+* Add stackTitle class
  
 ### release-1.0.0
 * First release
