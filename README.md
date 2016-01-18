@@ -331,6 +331,7 @@ Have fun :-)
 Do you know that I also created some other Dashing-JS widgets? Try out
 
 * [Jenkins Job widget](http://kj187.github.io/dashing-jenkins_job/)
+* [Meeting Reminder widget](http://kj187.github.io/dashing-reminder)
 * [GitHub PullRequest widget](http://kj187.github.io/dashing-github_pullrequests/)
 * [TargetProcess Impediments widget](http://kj187.github.io/dashing-targetprocess_impediments/)
 * [TargetProcess Sprint widget](http://kj187.github.io/dashing-targetprocess_sprint/)
