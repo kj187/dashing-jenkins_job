@@ -452,7 +452,7 @@ link<span class="pl-c1">(</span><span class="pl-e">rel</span>=<span class="pl-s"
 
 <div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">li</span> <span class="pl-e">data-row</span>=<span class="pl-s"><span class="pl-pds">"</span>2<span class="pl-pds">"</span></span> <span class="pl-e">data-col</span>=<span class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span> <span class="pl-e">data-sizex</span>=<span class="pl-s"><span class="pl-pds">"</span>2<span class="pl-pds">"</span></span> <span class="pl-e">data-sizey</span>=<span class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span>&gt;
   &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>widget-jenkins_job widget container<span class="pl-pds">"</span></span>&gt;
-    &lt;<span class="pl-ent">h1</span>&gt;Title&lt;/<span class="pl-ent">h1</span>&gt;
+    &lt;<span class="pl-ent">h1</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>stackTitle<span class="pl-pds">"</span></span>&gt;Title&lt;/<span class="pl-ent">h1</span>&gt;
     &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>widget-jenkins_job item<span class="pl-pds">"</span></span>&gt;
       &lt;<span class="pl-ent">div</span> <span class="pl-e">data-id</span>=<span class="pl-s"><span class="pl-pds">"</span>install_latest<span class="pl-pds">"</span></span> <span class="pl-e">data-view</span>=<span class="pl-s"><span class="pl-pds">"</span>JenkinsJob<span class="pl-pds">"</span></span> <span class="pl-e">data-bind-class</span>=<span class="pl-s"><span class="pl-pds">"</span>result | append additionalclass<span class="pl-pds">"</span></span> <span class="pl-e">data-additionalclass</span>=<span class="pl-s"><span class="pl-pds">"</span> widget<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">div</span>&gt;
       &lt;<span class="pl-ent">i</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>fa fa-cog icon-background<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">i</span>&gt;
@@ -469,7 +469,7 @@ link<span class="pl-c1">(</span><span class="pl-e">rel</span>=<span class="pl-s"
 
 <div class="highlight highlight-text-jade"><pre>li<span class="pl-c1">(</span><span class="pl-e">data-row</span>=<span class="pl-s">'1'</span>, <span class="pl-e">data-col</span>=<span class="pl-s">'1'</span>, <span class="pl-e">data-sizex</span>=<span class="pl-s">'1'</span>, <span class="pl-e">data-sizey</span>=<span class="pl-s">'1'</span><span class="pl-c1">)</span>
   div<span class="pl-c1">(</span><span class="pl-e">class</span>=<span class="pl-s">'widget-jenkins_job widget container'</span><span class="pl-c1">)</span>
-    h1<span class="pl-c1">(</span><span class="pl-e">title</span>=<span class="pl-s">'Titel'</span><span class="pl-c1">)</span>
+    h1<span class="pl-c1">(</span><span class="pl-e">title</span>=<span class="pl-s">'Titel'</span>, <span class="pl-e">class</span>=<span class="pl-s">'stackTitle'</span><span class="pl-c1">)</span>
     div<span class="pl-c1">(</span><span class="pl-e">class</span>=<span class="pl-s">'widget-jenkins_job item'</span><span class="pl-c1">)</span>
       div<span class="pl-c1">(</span><span class="pl-e">data-id</span>=<span class="pl-s">'install_latest'</span>, <span class="pl-e">data-view</span>=<span class="pl-s">'JenkinsJob'</span>, <span class="pl-e">data-bind-class</span>=<span class="pl-s">'result | prepend additionalclass'</span>, <span class="pl-e">data-additionalclass</span>=<span class="pl-s">'widget '</span><span class="pl-c1">)</span>
       li<span class="pl-c1">(</span><span class="pl-e">class</span>=<span class="pl-s">'fa fa-code icon-background'</span><span class="pl-c1">)</span>
@@ -488,6 +488,7 @@ link<span class="pl-c1">(</span><span class="pl-e">rel</span>=<span class="pl-s"
 
 <ul>
 <li>Add caching for externalBuildNumber. You have to install "memory-cache" via npm</li>
+<li>Add stackTitle class</li>
 </ul>
 
 <h3>
@@ -504,6 +505,7 @@ link<span class="pl-c1">(</span><span class="pl-e">rel</span>=<span class="pl-s"
 
 <ul>
 <li><a href="http://kj187.github.io/dashing-jenkins_job/">Jenkins Job widget</a></li>
+<li><a href="http://kj187.github.io/dashing-reminder">Meeting Reminder widget</a></li>
 <li><a href="http://kj187.github.io/dashing-github_pullrequests/">GitHub PullRequest widget</a></li>
 <li><a href="http://kj187.github.io/dashing-targetprocess_impediments/">TargetProcess Impediments widget</a></li>
 <li><a href="http://kj187.github.io/dashing-targetprocess_sprint/">TargetProcess Sprint widget</a></li>
