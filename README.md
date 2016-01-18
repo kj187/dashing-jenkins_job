@@ -15,6 +15,9 @@ Here you can see what you can achive only with Dashing-JS and this Jenkins Job w
 
 ![Dashboard example](http://res.cloudinary.com/kj187/image/upload/c_scale,w_890/v1450212394/kj187_Dashboard_2_i4wkw6.png)
 
+With other third party widgets
+![Example](http://res.cloudinary.com/kj187/image/upload/v1453152816/dashboard_example_stb2dc.png)
+
 ## Requirements
 
 [Dashing-JS](https://github.com/fabiocaseri/dashing-js)
