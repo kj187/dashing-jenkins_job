@@ -12,7 +12,7 @@ var init = function() {
 
     return {
         getResult: function(data) {
-            if (data['result'] == undefined || data['result'] == null) {
+            if (data['building'] == true || data['result'] == undefined || data['result'] == null) {
                 return 'running';
             }
 
