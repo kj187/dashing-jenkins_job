@@ -71,7 +71,13 @@ config.jobs.forEach(function(job) {
                 }
                 if (externalBuildNumber == null || (eventArguments.building == false && data['timestamp'] != lastBuildTimestamp)) {
                     delete eventArguments.buildNumber;
-                    request(job.externalBuildNumber.url, function (error, response, externalBuildNumber) {
+                    request({
+                        url: job.externalBuildNumber.url,
+                        headers: {
+                            'Cache-Control': 'no-cache, no-store, must-revalidate',
+                            'Pragma': 'no-cache'
+                        }
+                    }, function (error, response, externalBuildNumber) {
                         if (error || response.statusCode != 200) {
                             externalBuildNumber = 'Error';
                             console.log(job.externalBuildNumber.url + ' not found: ', error, response.statusCode)
