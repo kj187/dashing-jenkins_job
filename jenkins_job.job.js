@@ -83,8 +83,8 @@ config.jobs.forEach(function(job) {
                             externalBuildNumber = 'Error';
                             console.log(job.externalBuildNumber.url + ' not found: ', error, response.statusCode)
                         }
-                        cache.put(job.id + '_externalBuildNumber', externalBuildNumber);
-                        cache.put(job.id + '_timestamp', data['timestamp']);
+                        cache.put(job.id + '_externalBuildNumber', externalBuildNumber, 180000);
+                        cache.put(job.id + '_timestamp', data['timestamp'], 180000);
                         send_event(job.eventName, {buildNumber: externalBuildNumber});
                     })
                 }
