@@ -52,6 +52,7 @@ class Dashing.JenkinsJob extends Dashing.Widget
   ready: ->
     @progressState = 'open'
     @currentInterval = null
+    @currentRunningBuildNumber = 0
 
   onData: (data) ->
     if data.loadCoffeeScript == true
@@ -97,6 +98,12 @@ class Dashing.JenkinsJob extends Dashing.Widget
           self.progressState = 'open'
           hideProgressbar()
           return
+
+        if self.currentRunningBuildNumber != data.buildNumber
+          self.currentRunningBuildNumber = data.buildNumber
+          widgetNode.find('.duration').html('Duration: ' + data.displayDuration)
+          self.progressState = 'open'
+          hideProgressbar()
 
         if data.building and self.progressState != 'running'
           console.log 'start progress'
