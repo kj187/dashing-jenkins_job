@@ -56,6 +56,8 @@ class Dashing.JenkinsJob extends Dashing.Widget
 
   onData: (data) ->
     if data.loadCoffeeScript == true
+      $(@node).parent().attr('onclick', 'window.open(\'' + data.url + '\')')
+
       if typeof @progressState != 'undefined' and @progressState != null
         self = this
         widgetNode = $(@node)

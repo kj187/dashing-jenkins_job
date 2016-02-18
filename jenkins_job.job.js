@@ -61,7 +61,8 @@ config.jobs.forEach(function(job) {
                 duration: data['duration'],
                 estimatedDuration: data['estimatedDuration'],
                 displayDuration: moment(data['duration']).utc().format('HH:mm:ss'),
-                displayEstimatedDuration: moment(data['estimatedDuration']).utc().format('HH:mm:ss')
+                displayEstimatedDuration: moment(data['estimatedDuration']).utc().format('HH:mm:ss'),
+                url: data['url']
             };
 
             if (job.externalBuildNumber != undefined) {
