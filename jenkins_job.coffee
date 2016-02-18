@@ -73,8 +73,9 @@ class Dashing.JenkinsJob extends Dashing.Widget
           widgetNode.attr('class', cssClass)
 
           estimatedDuration = data.estimatedDuration || 40000
-          iNow = (new Date).setTime((new Date).getTime() + 1000)
-          iEnd = (new Date).setTime((new Date).getTime() + estimatedDuration)
+          iNow = data.timestamp
+          iEnd = data.timestamp + estimatedDuration
+
           self.currentInterval = progressbarNode.anim_progressbar {
             start: iNow
             finish: iEnd

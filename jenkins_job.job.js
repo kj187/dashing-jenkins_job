@@ -56,6 +56,7 @@ config.jobs.forEach(function(job) {
                 buildNumber: data['id'],
                 result: JenkinsService.getResult(data),
                 building: data['building'],
+                timestamp: data['timestamp'],
                 timeAgo: JenkinsService.lastTimeOfExecution(data['timestamp']),
                 duration: data['duration'],
                 estimatedDuration: data['estimatedDuration'],
