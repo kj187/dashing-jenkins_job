@@ -6,9 +6,7 @@ var JenkinsAPI;
 
 var init = function() {
 
-    JenkinsAPI = jenkins_api.init(config.protocol + '://' + config.username + ':' + config.token + '@' + config.host, {
-        rejectUnauthorized: false
-    });
+    JenkinsAPI = jenkins_api.init(config.protocol + '://' + config.username + ':' + config.token + '@' + config.host, config.request.defaults);
 
     return {
         getResult: function(data) {
@@ -45,6 +43,10 @@ var JenkinsService = init();
 var cronJob = require('cron').CronJob;
 var request = require('request');
 var cache = require('memory-cache');
+
+if (config.request.defaults) {
+    request = request.defaults(config.request.defaults);
+}
 
 config.jobs.forEach(function(job) {
     new cronJob(job.cronInterval, function(){
@@ -84,6 +86,7 @@ config.jobs.forEach(function(job) {
                             externalBuildNumber = 'Error';
                             console.log(job.externalBuildNumber.url + ' not found: ', error, response.statusCode)
                         }
+
                         cache.put(job.id + '_externalBuildNumber', externalBuildNumber, 180000);
                         cache.put(job.id + '_timestamp', data['timestamp'], 180000);
                         send_event(job.eventName, {buildNumber: externalBuildNumber});
