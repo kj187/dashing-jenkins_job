@@ -6,6 +6,12 @@ module.exports = {
     token: 'YOUR_JENKINS_ACCESS_TOKEN_OR_PLAINTEXT_PASSWORD',
     host: 'YOUR_JENKINS_HOST',
 
+    request: {
+        defaults: {
+            rejectUnauthorized: false
+        }
+    },
+
     jobs: [
         {
             id: 'build',
