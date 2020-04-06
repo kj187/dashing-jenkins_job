@@ -272,10 +272,10 @@ Or if you use Jade
 li(data-row='1', data-col='2', data-sizex='1', data-sizey='1')
   div(class='widget-jenkins_job two-row-container')
     div(data-id='grunt_deploy', data-view='JenkinsJob', data-bind-class='result | prepend additionalclass', data-additionalclass='widget two-row-widget ')
-    li(class='fa fa-code icon-background')
+    i(class='fa fa-code icon-background')
   div(class='widget-jenkins_job two-row-container')
     div(data-id='create_backup', data-view='JenkinsJob', data-bind-class='result | prepend additionalclass', data-additionalclass='widget two-row-widget ')
-    li(class='fa fa-code icon-background')
+    i(class='fa fa-code icon-background')
 ```
 
 The first example uses a `data-sizex="2"` attribute and the second `data-sizex="1"`.
@@ -313,10 +313,10 @@ li(data-row='1', data-col='1', data-sizex='1', data-sizey='1')
     h1(title='Titel', class='stackTitle')
     div(class='widget-jenkins_job item')
       div(data-id='install_latest', data-view='JenkinsJob', data-bind-class='result | prepend additionalclass', data-additionalclass='widget ')
-      li(class='fa fa-code icon-background')
+      i(class='fa fa-code icon-background')
     div(class='widget-jenkins_job item')
       div(data-id='unittest_latest', data-view='JenkinsJob', data-bind-class='result | prepend additionalclass', data-additionalclass='widget ')
-      li(class='fa fa-shield icon-background')
+      i(class='fa fa-shield icon-background')
     // ...
 ```
 
